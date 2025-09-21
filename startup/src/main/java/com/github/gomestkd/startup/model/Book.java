@@ -25,7 +25,7 @@ public class Book implements Serializable {
     private Long id;
 
     @NotBlank
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false)
     private String title;
 
     @NotBlank
@@ -35,7 +35,7 @@ public class Book implements Serializable {
     @NotNull
     @Positive
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
+    private Double price;
 
     @NotNull
     @Column(name = "launch_date", nullable = false)
@@ -46,7 +46,7 @@ public class Book implements Serializable {
 
     public Book() {}
 
-    public Book(Long id, String title, String author, BigDecimal price, LocalDate launchDate) {
+    public Book(Long id, String title, String author, Double price, LocalDate launchDate) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -63,8 +63,8 @@ public class Book implements Serializable {
     public String getAuthor() { return author; }
     public void setAuthor(String author) { this.author = author; }
 
-    public BigDecimal getPrice() { return price; }
-    public void setPrice(BigDecimal price) { this.price = price; }
+    public Double getPrice() { return price; }
+    public void setPrice(Double price) { this.price = price; }
 
     public LocalDate getLaunchDate() { return launchDate; }
     public void setLaunchDate(LocalDate launchDate) { this.launchDate = launchDate; }
@@ -74,14 +74,13 @@ public class Book implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (!(o instanceof Book book)) return false;
-        return Objects.equals(id, book.id);
+        return Objects.equals(getId(), book.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hashCode(getId());
     }
 
     @Override

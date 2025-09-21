@@ -47,8 +47,7 @@ public class Permission implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Permission that = (Permission) o;
+        if (!(o instanceof Permission that)) return false;
         return Objects.equals(getId(), that.getId());
     }
 
