@@ -1,6 +1,5 @@
 package com.github.gomestkd.startup.file.exporter.factory;
 
-import com.github.gomestkd.startup.data.dto.PersonDTO;
 import com.github.gomestkd.startup.file.exporter.MediaTypes;
 import com.github.gomestkd.startup.file.exporter.contract.PersonExporter;
 import com.github.gomestkd.startup.file.exporter.implementation.CsvExporter;
@@ -37,7 +36,7 @@ public class FileExporterFactory {
             return applicationContext.getBean(PdfExporter.class);
         } else {
             logger.warn("No suitable exporter found for media type: '{}'. Throwing BadRequestException.", acceptHeader);
-            return null;
+            throw new BadRequestException("Invalid File Format!");
         }
     }
 }
