@@ -2,6 +2,7 @@ package com.github.gomestkd.startup.file.exporter.implementation;
 
 import com.github.gomestkd.startup.data.dto.PersonDTO;
 import com.github.gomestkd.startup.file.exporter.contract.PersonExporter;
+import com.github.gomestkd.startup.services.QRCodeService;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.slf4j.Logger;
@@ -23,7 +24,6 @@ import java.util.Set;
 public class PdfExporter implements PersonExporter {
     private static final Logger logger = LoggerFactory.getLogger(PdfExporter.class);
 
-    @Autowired
     private final QRCodeService qrCodeService;
 
     public PdfExporter(QRCodeService qrCodeService) {

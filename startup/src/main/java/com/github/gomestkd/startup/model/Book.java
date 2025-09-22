@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Positive;
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
@@ -34,19 +35,19 @@ public class Book implements Serializable {
 
     @NotNull
     @Positive
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false)
     private Double price;
 
     @NotNull
     @Column(name = "launch_date", nullable = false)
-    private LocalDate launchDate;
+    private Instant launchDate;
 
     @ManyToMany(mappedBy = "books", fetch = FetchType.LAZY)
     private Set<Person> owners = new HashSet<>();
 
     public Book() {}
 
-    public Book(Long id, String title, String author, Double price, LocalDate launchDate) {
+    public Book(Long id, String title, String author, Double price, Instant launchDate) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -66,8 +67,8 @@ public class Book implements Serializable {
     public Double getPrice() { return price; }
     public void setPrice(Double price) { this.price = price; }
 
-    public LocalDate getLaunchDate() { return launchDate; }
-    public void setLaunchDate(LocalDate launchDate) { this.launchDate = launchDate; }
+    public Instant getLaunchDate() { return launchDate; }
+    public void setLaunchDate(Instant launchDate) { this.launchDate = launchDate; }
 
     public Set<Person> getOwners() { return owners; }
     public void setOwners(Set<Person> owners) { this.owners = owners; }

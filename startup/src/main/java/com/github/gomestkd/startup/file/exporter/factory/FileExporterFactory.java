@@ -24,7 +24,7 @@ public class FileExporterFactory {
         this.applicationContext = applicationContext;
     }
 
-    public PersonExporter createPersonExporter(String acceptHeader) {
+    public PersonExporter getPersonExporter(String acceptHeader) {
         logger.debug("Attempting to find person exporter for media type: '{}'", acceptHeader);
         if (acceptHeader.equalsIgnoreCase(MediaTypes.APPLICATION_XLSX_VALUE)) {
             logger.info("XLSX exporter selected for media type: '{}'", acceptHeader);

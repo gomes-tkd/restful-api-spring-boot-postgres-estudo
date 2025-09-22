@@ -8,6 +8,7 @@ import org.springframework.lang.NonNull;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Objects;
 
@@ -31,12 +32,12 @@ public class BookDTO extends RepresentationModel<BookDTO> implements Serializabl
     private Double price;
 
     @JsonProperty("launch_date")
-    private Date launchDate;
+    private Instant launchDate;
 
     public BookDTO() {
     }
 
-    public BookDTO(Long id, String title, String author, Double price, Date launchDate) {
+    public BookDTO(Long id, String title, String author, Double price, Instant launchDate) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -72,10 +73,10 @@ public class BookDTO extends RepresentationModel<BookDTO> implements Serializabl
         this.price = price;
     }
 
-    public Date getLaunchDate() {
+    public Instant getLaunchDate() {
         return launchDate;
     }
-    public void setLaunchDate(Date launchDate) {
+    public void setLaunchDate(Instant launchDate) {
         this.launchDate = launchDate;
     }
 

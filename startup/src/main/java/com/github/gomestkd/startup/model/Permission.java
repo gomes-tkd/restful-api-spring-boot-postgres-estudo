@@ -3,6 +3,7 @@ package com.github.gomestkd.startup.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "permission")
-public class Permission implements Serializable {
+public class Permission implements GrantedAuthority, Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -22,6 +23,12 @@ public class Permission implements Serializable {
     @Size(max = 100)
     @Column(nullable = false, unique = true, length = 100)
     private String description;
+
+    // MÉTODO NOVO E OBRIGATÓRIO
+    @Override
+    public String getAuthority() {
+        return this.description;
+    }
 
     public Permission() {
     }
