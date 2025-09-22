@@ -1,5 +1,6 @@
 package com.github.gomestkd.startup.mail;
 
+import com.github.gomestkd.startup.config.EmailConfig;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import org.slf4j.Logger;
@@ -66,7 +67,7 @@ public class EmailSender implements Serializable {
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            helper.setFrom(config.getUsername);
+            helper.setFrom(config.getUsername());
             helper.setTo(this.recipients.toArray(new InternetAddress[0]));
             helper.setSubject(this.subject);
             helper.setText(this.body, true);
