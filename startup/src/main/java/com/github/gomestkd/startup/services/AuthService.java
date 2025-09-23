@@ -47,6 +47,8 @@ public class AuthService {
             throw new UsernameNotFoundException("Username " + credentials.getUsername() + " not found!");
         }
 
+        System.out.println("Senha do usuário:" + user.getPassword());
+
         TokenDTO token = tokenProvider.createAccessToken(
                 credentials.getUsername(),
                 user.getRoles()

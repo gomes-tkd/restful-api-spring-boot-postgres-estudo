@@ -30,12 +30,12 @@ public class AuthController implements AuthControllerDocs {
     @Override
     public ResponseEntity<?> signin(@RequestBody AccountCredentialsDTO credentials) {
         if (credentialsIsInvalid(credentials)) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid client request!");
         }
 
         ResponseEntity<TokenDTO> token = service.signIn(credentials);
         if (token == null) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid client request!");
         }
 
         return token;

@@ -16,10 +16,8 @@ public class TokenDTO implements Serializable {
     private Instant createdAt;
     private Instant expiresAt;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String accessToken;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String refreshToken;
 
     public TokenDTO() {

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/book")
-@Tag(name = "Book", description = "Endpoints for Managing Book")
+@Tag(name = "Books", description = "Endpoints for Managing Book")
 public class BookController implements BookControllerDocs {
 
     private final BookService service;

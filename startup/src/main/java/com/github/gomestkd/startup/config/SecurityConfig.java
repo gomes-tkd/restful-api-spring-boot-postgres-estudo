@@ -37,7 +37,7 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         PasswordEncoder pbkdf2Encoder = new Pbkdf2PasswordEncoder(
                 "", 8, 185000,
-                Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA512
+                Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA256
         );
 
         Map<String, PasswordEncoder> encoders = new HashMap<>();
@@ -68,7 +68,7 @@ public class SecurityConfig {
         );
 
         logger.info("Configuring security: public endpoints = {}", publicEndpoints);
-
+        //@formatter:off
         return http
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
@@ -84,5 +84,6 @@ public class SecurityConfig {
                 )
                 .cors(cors -> {})
                 .build();
+        //@formatter:on
     }
 }

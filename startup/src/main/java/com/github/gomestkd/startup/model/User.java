@@ -48,6 +48,10 @@ public class User implements UserDetails, Serializable {
     private boolean enabled = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_permission",
+            joinColumns = {@JoinColumn (name = "id_user")},
+            inverseJoinColumns = {@JoinColumn (name = "id_permission")}
+    )
     private Set<Permission> permissions = new HashSet<>();
 
     public User() {

@@ -24,7 +24,6 @@ public class Permission implements GrantedAuthority, Serializable {
     @Column(nullable = false, unique = true, length = 100)
     private String description;
 
-    // MÉTODO NOVO E OBRIGATÓRIO
     @Override
     public String getAuthority() {
         return this.description;
