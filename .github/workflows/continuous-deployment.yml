@@ -21,8 +21,27 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-    - uses: actions/setup-java@v4
+    - name: Setup Java JDK 21
+      uses: actions/setup-java@v5
       with:
         distribution: 'temurin'
         java-version: '21'
         cache: 'maven'
+
+    - name: Build Application .jar
+      working-directory: ./startup
+      run: mvn clean package -DskipTests
+
+    - name: Running Application
+      working-directory: ./startup
+      run: mvn spring-boot:run
+
+    - name: Docker Compose Build
+      working-directory: ./
+      run: docker compose up -d --build &&
+
+    - name: Push to Docker Hub Container Registry
+      run: | 
+        docker tag ${{ secrets.DOCKER_USERNAME }}/startup:latest ${{ secrets.DOCKER_USERNAME }}/startup:${{ github.run_id }}
+        docker compose push ${{ secrets.DOCKER_USERNAME }}/startup:latest
+        docker compose push ${{ secrets.DOCKER_USERNAME }}/startup:${{ github.run_id }}
