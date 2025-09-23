@@ -43,5 +43,5 @@ jobs:
     - name: Push to Docker Hub Container Registry
       run: | 
         docker tag ${{ secrets.DOCKER_USERNAME }}/startup-udemy:latest ${{ secrets.DOCKER_USERNAME }}/startup-udemy:${{ github.run_id }}
-        docker compose push ${{ secrets.DOCKER_USERNAME }}/startup-udemy:latest
-        docker compose push ${{ secrets.DOCKER_USERNAME }}/startup-udemy:${{ github.run_id }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/startup-udemy:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/startup-udemy:${{ github.run_id }}
