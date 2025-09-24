@@ -20,7 +20,7 @@ services:
   startup:
     build: ./startup
     container_name: startup
-    image: gomestkd/startup-udemy
+    image: gomestkd/startup
     restart: always
     working_dir: /startup
     environment:

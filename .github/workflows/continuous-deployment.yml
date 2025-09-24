@@ -38,10 +38,10 @@ jobs:
 
     - name: Docker Compose Build
       working-directory: ./
-      run: docker compose up -d --build
+      run: docker compose build
 
     - name: Push to Docker Hub Container Registry
       run: | 
-        docker tag ${{ secrets.DOCKER_USERNAME }}/startup-udemy:latest ${{ secrets.DOCKER_USERNAME }}/startup-udemy:${{ github.run_id }}
-        docker push ${{ secrets.DOCKER_USERNAME }}/startup-udemy:latest
-        docker push ${{ secrets.DOCKER_USERNAME }}/startup-udemy:${{ github.run_id }}
+        docker tag ${{ secrets.DOCKER_USERNAME }}/startup:latest ${{ secrets.DOCKER_USERNAME }}/startup:${{ github.run_id }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/startup:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/startup:${{ github.run_id }}
